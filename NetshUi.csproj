@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NetshUi</RootNamespace>
+    <AssemblyName>NetshUi</AssemblyName>
+    <!-- 只需要简体中文卫星资源 -->
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+    <!--
+      .NET 10 默认开漏洞审计，restore 时会对着每个 NuGet 源（含内网镜像）逐包拉元数据，
+      本项目实测因此从 1.6 秒涨到 49 秒。依赖只有 MewUI 一个，关掉审计换回秒级 restore。
+      需要检查漏洞时临时加 -p:NuGetAudit=true 跑一次即可。
+    -->
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Windows 专用：Core + Win32 宿主 + Direct2D/GDI/MewVG 渲染后端 -->
+    <PackageReference Include="Aprillz.MewUI.Windows" Version="0.22.1" />
+  </ItemGroup>
+
+</Project>

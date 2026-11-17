@@ -1,0 +1,12 @@
+## 构建产物
+bin/
+obj/
+publish/
+
+## 用户级配置
+*.user
+*.suo
+.vs/
+
+## 备注文件（运行时生成，按机器而定）
+portproxy-notes.json
